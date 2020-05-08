@@ -266,7 +266,7 @@ func (s *AuthServer) changePasswordWithToken(ctx context.Context, req ChangePass
 	if err != nil {
 		return nil, trace.Wrap(err)
 	}
-	if clusterConfig.GetLocalAuth() == false {
+	if !clusterConfig.GetLocalAuth() {
 		return nil, trace.AccessDenied(noLocalAuth)
 	}
 
